@@ -35,6 +35,15 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        //Call Logic for Fade In
+        if (//logic is true)
+        {
+            StartCoroutine(fadeIn());
+        }
+    }
+    
     public void playMusic()
     {
         //This will play the Background Track
@@ -55,4 +64,31 @@ public class AudioManager : MonoBehaviour
         //This will play any Btn sound
         sfxSource.PlayOneShot(clip);
     }
+
+    private IEnumerator fadeIn()
+    {
+        //Save the Value of musicSource Volume to startVolume float
+        float startVolume = musicSource.volume; 
+
+        //Timer
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime /  fadeDuration);
+
+            //Waits for next frame
+            yield return null;
+        }
+
+        musicSource.Stop();
+        musicSource.volume = startVolume;
+
+        currentTrack++;
+
+        playMusic();
+        
+    }
+}
 }
