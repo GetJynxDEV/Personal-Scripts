@@ -49,6 +49,10 @@ public class Instantiate : MonoBehaviour
         Vector3 newPos = new Vector3(0, 0, 0); //You can modify what's inside the new Vector3
         //Call the Object you want to Instantiate, then get the newPos for its Position, then last is the Rotation
         GameObject newObject = Instantiate(prefab, newPos, Quaternion.identity);
+
+        //You can also set the Instantiated Object to be a child of a GameObject
+        //Set newObject inside a Parent
+        newObject.transform.SetParent(parentObject);
     }
 
     private void Ienumator
