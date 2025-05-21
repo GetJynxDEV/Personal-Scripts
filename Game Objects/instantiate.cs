@@ -5,17 +5,21 @@ using UnityEngine;
 public class Instantiate : MonoBehaviour
 {    
     //Attach the GameObject Prefab that you want to Instantiate
-    public GameObject prefab;
+    [SerializeField] private GameObject prefab;
     //Attach the Transform of where you want it to spawn
-    public Transform prefabPos;
+    [SerializeField] private Transform prefabPos;
 
     //Countdown Timer for when it will spawn
-    public float elapsedTimer;
+    [SerializeField] private float elapsedTimer;
     //Set Max Timer for Countdown Timer
-    public float maxTimer = 2f;
+    [SerializeField] private float maxTimer = 2f;
 
+    //Float Value for starting X position of Prefab
+    [SerializeField] private float startPos;
+
+    
     private void Update()
-    { 
+    {
         //Elapsed Timer will now start counting
         elapsedTimer = Time.deltaTime;
 
@@ -28,12 +32,24 @@ public class Instantiate : MonoBehaviour
             //Function to Instantiate Game Object
             spawnPrefab();
         }
+        
     }
 
     private void spawnPrefab()
     {
         //This is how you will Instantiate a Game Object
+        //There will be 2 Examples of how you will spawn a prefab
+
+        //Example One
         //Call the Object you want to Instantiate, then the Position you want, then last is the Rotation
-        Instantiate(prefab, prefabPos.position, Quaternion.identity);
+         GameObject newObject Instantiate(prefab, prefabPos.position, Quaternion.identity);
+
+        //Example Two
+        //This will randomize the X and Y Position of the Platform
+        Vector3 newPos = new Vector3(0, 0, 0); //You can modify what's inside the new Vector3
+        //Call the Object you want to Instantiate, then get the newPos for its Position, then last is the Rotation
+        GameObject newObject = Instantiate(prefab, newPos, Quaternion.identity);
     }
+
+    private void Ienumator
 }
