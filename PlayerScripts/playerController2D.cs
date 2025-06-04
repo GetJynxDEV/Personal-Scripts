@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//REMINDER
+//THIS SCRIPT USES THE INPUT SYSTEM FROM THE PACKAGE MANAGER
+
 public class playerController2D : MonoBehaviour
 {
     [Header("COMPONENTS")]
