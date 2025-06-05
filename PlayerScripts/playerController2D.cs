@@ -67,6 +67,13 @@ public class playerController2D : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+    
+    groundCheck();
+    
+    }
+    
     private void FixedUpdate()
     {
         //Determines where the Player Horizontal Movement Output is
