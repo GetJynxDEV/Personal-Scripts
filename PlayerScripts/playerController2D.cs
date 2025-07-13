@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (context.performed && canJump)
+        if (context.performed)
         {
             horizontalInput = context.ReadValue<Vector2>().x;
 
@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && canJump)
         {
             if (isGrounded && remainingJumps > 0)
             {
