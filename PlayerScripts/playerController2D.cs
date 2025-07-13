@@ -66,19 +66,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        horizontalInput = context.ReadValue<Vector2>().x;
+
+        if (isGrounded)
         {
-            horizontalInput = context.ReadValue<Vector2>().x;
+            anim.SetBool("isGrounded", true);
+        }
 
-            if (isGrounded)
-            {
-                anim.SetBool("isGrounded", true);
-            }
-
-            else
-            {
-                anim.SetBool("isGrounded", false);
-            }
+        else
+        {
+            anim.SetBool("isGrounded", false);
         }
     }
 
