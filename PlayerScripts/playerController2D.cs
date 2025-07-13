@@ -10,12 +10,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("COMPONENTS")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
+    [SerializeField] private Transform PlayerTransform;
 
     [Header("MOVEMENT")]
     //This determines the Player's move direction
     [SerializeField] private float horizontalInput;
     //This determines the Player's move speed
     [SerializeField] private float speed;
+    //This determines where the Player is facing
+    [SerializeField] private bool isFacingRight;
 
     [Header("JUMP")]
     //This determines the Player's jump force
@@ -49,6 +52,22 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        PlayerTransform = GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        // Only update rotation if direction changes
+        if (horizontalInput == 1 && !isFacingRight)
+        {
+            PlayerTransform.rotation = Quaternion.Euler(0, 0, 0);
+            isFacingRight = true;
+        }
+        else if (horizontalInput == -1 && isFacingRight)
+        {
+            PlayerTransform.rotation = Quaternion.Euler(0, 180, 0);
+            isFacingRight = false;
+        }
     }
 
     private void FixedUpdate()
